@@ -2,230 +2,135 @@
 <html lang="fa">
 <head>
 <meta charset="UTF-8">
-<title>Shab-e Yalda</title>
-
+<title>Happy Birthday Yalda</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600&display=swap" rel="stylesheet">
-
 <style>
-:root{
-    --gold:#cbb98a;
-    --soft:#f1efe8;
-    --dark:#010103;
-}
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Vazirmatn',sans-serif;
-}
-
-body{
-    height:100vh;
-    background:#000;
-    overflow:hidden;
-    color:var(--soft);
-}
-
-canvas{
-    position:fixed;
-    inset:0;
-    z-index:0;
-}
-
-/* --- main scene --- */
-.scene{
-    position:relative;
-    z-index:2;
-    height:100%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:40px;
-}
-
-/* --- monolithic glass --- */
-.monolith{
-    width:100%;
-    max-width:920px;
-    padding:95px 110px;
-    background:
-        linear-gradient(180deg,
-            rgba(255,255,255,0.065),
-            rgba(255,255,255,0.015));
-    border-radius:26px;
-    backdrop-filter: blur(28px);
-    box-shadow:
-        0 0 0 1px rgba(255,255,255,0.055),
-        0 70px 240px rgba(0,0,0,0.95);
-    animation:enter 2.6s cubic-bezier(.19,1,.22,1) forwards;
-}
-
-@keyframes enter{
-    from{
-        opacity:0;
-        transform:translateY(90px) scale(.955);
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
     }
-    to{
-        opacity:1;
-        transform:none;
+
+    body {
+        font-family: 'Vazirmatn', sans-serif;
+        background: radial-gradient(circle at top, #2b1055, #0a043c);
+        height: 100vh;
+        overflow: hidden;
+        color: #fff;
     }
-}
 
-/* --- title --- */
-.title{
-    font-size:.9em;
-    letter-spacing:9px;
-    color:var(--gold);
-    margin-bottom:60px;
-}
-
-/* --- poetic text --- */
-.text{
-    font-size:1.38em;
-    line-height:2.65;
-    max-width:720px;
-}
-
-.line{
-    opacity:0;
-    transform:translateY(26px);
-    animation:lineReveal 1.6s ease forwards;
-}
-
-.line:nth-child(1){animation-delay:.8s}
-.line:nth-child(2){animation-delay:1.9s}
-.line:nth-child(3){animation-delay:3.1s}
-.line:nth-child(4){animation-delay:4.3s}
-
-@keyframes lineReveal{
-    to{
-        opacity:1;
-        transform:none;
+    .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('https://i.imgur.com/5rG6FJk.png');
+        animation: moveStars 60s linear infinite;
+        opacity: 0.3;
     }
-}
 
-.em{
-    color:var(--gold);
-}
+    @keyframes moveStars {
+        from { background-position: 0 0; }
+        to { background-position: 10000px 5000px; }
+    }
 
-/* --- short congratulation --- */
-.congrats{
-    margin-top:55px;
-    font-size:1.05em;
-    letter-spacing:1px;
-    color:#d6d2c3;
-    opacity:0;
-    animation:fadeIn 1.4s ease forwards;
-    animation-delay:5.4s;
-}
+    .container {
+        position: relative;
+        z-index: 2;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+    }
 
-/* --- signature --- */
-.signature{
-    margin-top:95px;
-    text-align:left;
-    opacity:0;
-    animation:fadeIn 1.6s ease forwards;
-    animation-delay:6.3s;
-}
+    .card {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 50px 40px;
+        max-width: 420px;
+        box-shadow: 0 0 40px rgba(0,0,0,0.4);
+        animation: fadeIn 2s ease forwards;
+    }
 
-.signature::before{
-    content:"";
-    width:130px;
-    height:1px;
-    background:linear-gradient(to right,var(--gold),transparent);
-    display:block;
-    margin-bottom:18px;
-}
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-.signature span{
-    letter-spacing:2.5px;
-    font-size:1.05em;
-}
+    h1 {
+        font-size: 36px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        letter-spacing: 1px;
+    }
 
-@keyframes fadeIn{
-    to{opacity:1}
-}
+    h2 {
+        font-size: 20px;
+        font-weight: 300;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 1.9;
+        opacity: 0.85;
+        margin-bottom: 30px;
+    }
+
+    .heart {
+        font-size: 30px;
+        animation: beat 1.5s infinite;
+    }
+
+    @keyframes beat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+    }
+
+    .signature {
+        margin-top: 20px;
+        font-size: 14px;
+        opacity: 0.6;
+    }
 </style>
 </head>
 <body>
 
-<canvas id="bg"></canvas>
+<div class="stars"></div>
 
-<div class="scene">
-    <div class="monolith">
-        <div class="title">SHAB-E YALDA</div>
+<div class="container">
+    <div class="card">
+        <h1>یلدا ✨</h1>
+        <h2>تولدت مبارک</h2>
 
-        <div class="text">
-            <div class="line">
-                شب یلدا،  
-                تنها امتدادِ زمان نیست؛
-            </div>
-            <div class="line">
-                لحظه‌ای‌ست که سکوت،  
-                عمیق‌تر از صدا معنا پیدا می‌کند.
-            </div>
-            <div class="line">
-                در این شبِ آرام و باشکوه،  
-                آرزو دارم گرما، حضور و زیبایی  
-                <span class="em">بی‌نیاز از توضیح</span> باشند.
-            </div>
-            <div class="line">
-                همان‌گونه که برخی لحظات،  
-                فقط احساس می‌شوند  
-                و برای همیشه می‌مانند.
-            </div>
-        </div>
+        <p>
+            بعضی آدم‌ها  
+            بدون اینکه کاری بکنند  
+            حالِ دنیا را بهتر می‌کنند.  
+            <br><br>
+            امیدوارم 21 سالگی  
+            پر از آرامش، لبخند  
+            و لحظه‌هایی باشد  
+            که دلت بخواهد نگهشان داری.
+        </p>
 
-        <div class="congrats">
-            شب یلدایتان مبارک.
-        </div>
+        <div class="heart">🤍</div>
 
         <div class="signature">
-            <span>مهدی</span>
+            از طرف کسی که  
+            امروز به یادت بود
         </div>
     </div>
 </div>
-
-<script>
-/* --- cinematic ambient particles --- */
-const canvas = document.getElementById('bg');
-const ctx = canvas.getContext('2d');
-
-let w,h,particles=[];
-function resize(){
-    w=canvas.width=window.innerWidth;
-    h=canvas.height=window.innerHeight;
-}
-window.addEventListener('resize',resize);
-resize();
-
-class Particle{
-    constructor(){
-        this.x=Math.random()*w;
-        this.y=Math.random()*h;
-        this.r=Math.random()*1.6+0.4;
-        this.v=Math.random()*0.18+0.05;
-    }
-    draw(){
-        ctx.beginPath();
-        ctx.fillStyle="rgba(203,185,138,.38)";
-        ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
-        ctx.fill();
-        this.y-=this.v;
-        if(this.y<0)this.y=h;
-    }
-}
-
-for(let i=0;i<200;i++)particles.push(new Particle());
-
-function animate(){
-    ctx.clearRect(0,0,w,h);
-    particles.forEach(p=>p.draw());
-    requestAnimationFrame(animate);
-}
-animate();
-</script>
 
 </body>
 </html>
